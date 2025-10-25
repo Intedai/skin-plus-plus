@@ -44,3 +44,20 @@ void ColorWheel::paintEvent(QPaintEvent *event)
     p.setBrush(whiteGradient);
     p.drawEllipse(rect());
 }
+
+void ColorWheel::mousePressEvent(QMouseEvent *event)
+{
+    float h,s;
+
+    QPointF center(RADIUS, RADIUS);
+    QPointF clickPos = event->pos();
+
+    QLineF line(center, clickPos);
+
+    s = qMin(1.0, line.length() / RADIUS);
+    h = fmod(1.0 - line.angle()/360.0 + 1.0, 1.0);
+
+    selectedColor.setHsvF(h,s, VALUE);
+    
+    emit ColorSelected(selectedColor);
+}
