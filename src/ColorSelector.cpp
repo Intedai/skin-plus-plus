@@ -20,4 +20,9 @@ ColorSelector::ColorSelector(QWidget *parent)
 
     setWindowFlags(Qt::WindowStaysOnTopHint | Qt::Tool);
     setWindowTitle(tr("Colors"));
+
+    // DEBUG: Print the selected color in RGB
+    connect(cw, &ColorWheel::ColorSelected, this, [](const QColor& color) {
+        qDebug() << "COLOR SELECTED:" << color.red() << color.blue() << color.green(); 
+    });
 }

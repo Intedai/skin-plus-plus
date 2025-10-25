@@ -5,8 +5,11 @@
 #include <QSize>
 #include <QPointF>
 #include <QColor>
+#include <QMouseEvent>
+#include <QLineF>
 #include <QConicalGradient>
 #include <QRadialGradient>
+#include <QtMath>
 
 class ColorWheel : public QWidget
 {
@@ -14,8 +17,14 @@ class ColorWheel : public QWidget
 
     public:
         ColorWheel(QWidget* parent = nullptr);
-        static constexpr double RADIUS {130 / 2.0};
         QSize sizeHint() const override;
     protected:
-        void paintEvent(QPaintEvent *event) override;    
+        void paintEvent(QPaintEvent *event) override;
+        void mousePressEvent(QMouseEvent *event) override;
+    private:
+        static constexpr double RADIUS {130 / 2.0};
+        static constexpr double VALUE {1};
+        QColor selectedColor;
+    signals:
+        void ColorSelected(const QColor& color);
 };
