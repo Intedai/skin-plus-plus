@@ -11,6 +11,8 @@ qt_standard_project_setup()
 
 qt_add_executable(Skin++
     src/main.cpp
+    src/MainWindow.cpp
+    include/MainWindow.hpp
     src/ColorWheel.cpp
     include/ColorWheel.hpp
     src/ColorSelector.cpp
