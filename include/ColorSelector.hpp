@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include "ColorWheel.hpp"
+#include "ColorButtons.hpp"
 
 class ColorSelector : public QWidget
 {

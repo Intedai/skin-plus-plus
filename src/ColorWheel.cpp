@@ -59,5 +59,8 @@ void ColorWheel::mousePressEvent(QMouseEvent *event)
 
     selectedColor.setHsvF(h,s, VALUE);
     
-    emit ColorSelected(selectedColor);
+    if (event->button() == Qt::RightButton)
+        emit ColorSelected(1, selectedColor);
+    else // Can also be the scroll wheel
+        emit ColorSelected(0, selectedColor);
 }

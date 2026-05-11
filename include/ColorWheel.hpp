@@ -26,5 +26,5 @@ private:
     static constexpr double VALUE {1};
     QColor selectedColor;
 signals:
-    void ColorSelected(const QColor& color);
+    void ColorSelected(int index, const QColor& color);
 };

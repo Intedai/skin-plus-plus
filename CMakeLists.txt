@@ -13,6 +13,8 @@ qt_add_executable(Skin++
     src/main.cpp
     src/MainWindow.cpp
     include/MainWindow.hpp
+    src/ColorButtons.cpp
+    include/ColorButtons.hpp
     src/ColorWheel.cpp
     include/ColorWheel.hpp
     src/ColorSelector.cpp
