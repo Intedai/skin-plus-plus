@@ -4,6 +4,7 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
+#include <QToolBar>
 
 class MainWindow : public QMainWindow
 {
@@ -21,15 +22,18 @@ private slots:
 private:
     void createActions();
     void createMenus();
+    void createToolBarAndMenus();
 
     QMenu *fileMenu;
     QMenu *editMenu;
     QMenu *viewMenu;
     QMenu *adjustmentsMenu;
-
+    
     QAction *newFileAct;
     QAction *openFileAct;
     QAction *quitAct;
     QAction *undoAct;
     QAction *redoAct;
+    
+    QToolBar *toolbar;
 };

@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
 {   
     createActions();
     createMenus();
+    createToolBarAndMenus();
     
     setWindowTitle(tr("Skin++ - Untitled"));
     resize(800, 600);
@@ -74,4 +75,16 @@ void MainWindow::createMenus()
     menuBar()->addMenu(editMenu);
     menuBar()->addMenu(viewMenu);
     menuBar()->addMenu(adjustmentsMenu);
+}
+
+void MainWindow::createToolBarAndMenus()
+{
+    toolbar = new QToolBar();
+    toolbar->setMovable(false);
+    toolbar->addAction(newFileAct);
+    toolbar->addAction(openFileAct);
+    toolbar->addSeparator();
+    toolbar->addAction(undoAct);
+    toolbar->addAction(redoAct);
+    addToolBar(toolbar);
 }

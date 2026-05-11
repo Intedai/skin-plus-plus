@@ -4,10 +4,10 @@ ColorSelector::ColorSelector(QWidget *parent)
     : QWidget(parent)
 {
     QPushButton *moreButton = new QPushButton(tr("More") + " >>");
-    ColorButtons *cpb = new ColorButtons();
+    ColorButtons *cb = new ColorButtons();
 
     QHBoxLayout *topLayout = new QHBoxLayout();
-    topLayout->addWidget(cpb);
+    topLayout->addWidget(cb);
     topLayout->addWidget(moreButton);
     
     QVBoxLayout *mainLayout = new QVBoxLayout();
@@ -22,5 +22,5 @@ ColorSelector::ColorSelector(QWidget *parent)
     setWindowFlags(Qt::WindowStaysOnTopHint | Qt::Tool);
     setWindowTitle(tr("Colors"));
 
-    connect(cw, &ColorWheel::ColorSelected, cpb, &ColorButtons::setColor);
+    connect(cw, &ColorWheel::ColorSelected, cb, &ColorButtons::setColor);
 }
