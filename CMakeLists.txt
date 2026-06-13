@@ -19,6 +19,10 @@ qt_add_executable(Skin++
     include/ColorWheel.hpp
     src/ColorSelector.cpp
     include/ColorSelector.hpp
+    src/Document.cpp
+    include/Document.hpp
+    src/CanvasView.cpp
+    include/CanvasView.hpp
 )
 
 target_include_directories(Skin++ PRIVATE

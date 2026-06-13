@@ -1,13 +1,16 @@
 #include "MainWindow.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent),
+      cView(new CanvasView(this)),
+      cs(new ColorSelector(this))
 {   
     createActions();
     createMenus();
     createToolBarAndMenus();
 
-    cs = new ColorSelector(this);
+    setCentralWidget(cView);
+
     connect(cs, &ColorSelector::closed, this, [=] {
         colorSelectorAct->setChecked(false);
     });

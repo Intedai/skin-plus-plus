@@ -7,6 +7,7 @@
 #include <QToolBar>
 #include <QDebug>
 #include "ColorSelector.hpp"
+#include "CanvasView.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -24,7 +25,7 @@ private slots:
     void setColorSelectorOn(bool on);
 private:
     ColorSelector *cs;
-    
+    CanvasView *cView;
     void createActions();
     void createMenus();
     void createToolBarAndMenus();
