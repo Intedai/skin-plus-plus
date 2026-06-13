@@ -14,6 +14,9 @@ class ColorSelector : public QWidget
     
 public:
     ColorSelector(QWidget *parent = nullptr);
+protected:
+void closeEvent(QCloseEvent *event) override;
 signals:
+    void closed();
     void ColorSelected(const QColor& color);
 };

@@ -6,7 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     createActions();
     createMenus();
     createToolBarAndMenus();
-    
+
+    cs = new ColorSelector(this);
+    connect(cs, &ColorSelector::closed, this, [=] {
+        colorSelectorAct->setChecked(false);
+    });
+
     setWindowTitle(tr("Skin++ - Untitled"));
     resize(800, 600);
 }
@@ -31,6 +36,11 @@ void MainWindow::redo()
 
 }
 
+void MainWindow::setColorSelectorOn(bool on)
+{
+    cs->setVisible(on);
+}
+
 void MainWindow::createActions()
 {
     newFileAct = new QAction(tr("&New"), this);
@@ -52,6 +62,10 @@ void MainWindow::createActions()
     redoAct = new QAction(tr("&Redo"), this);
     redoAct->setShortcuts(QKeySequence::Redo);
     connect(redoAct, &QAction::triggered, this, &MainWindow::redo);
+
+    colorSelectorAct = new QAction(tr("&Color Selector"), this);
+    colorSelectorAct->setCheckable(true);
+    connect(colorSelectorAct, &QAction::toggled, this, &MainWindow::setColorSelectorOn);
 }
 
 void MainWindow::createMenus()
@@ -86,5 +100,12 @@ void MainWindow::createToolBarAndMenus()
     toolbar->addSeparator();
     toolbar->addAction(undoAct);
     toolbar->addAction(redoAct);
+
+    QWidget* spacer = new QWidget();
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    toolbar->addWidget(spacer);
+
+    toolbar->addAction(colorSelectorAct);
+
     addToolBar(toolbar);
 }

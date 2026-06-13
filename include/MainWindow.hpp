@@ -5,6 +5,8 @@
 #include <QMenu>
 #include <QAction>
 #include <QToolBar>
+#include <QDebug>
+#include "ColorSelector.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -19,7 +21,10 @@ private slots:
     void openFile();
     void undo();
     void redo();
+    void setColorSelectorOn(bool on);
 private:
+    ColorSelector *cs;
+    
     void createActions();
     void createMenus();
     void createToolBarAndMenus();
@@ -34,6 +39,7 @@ private:
     QAction *quitAct;
     QAction *undoAct;
     QAction *redoAct;
-    
+    QAction *colorSelectorAct;
+
     QToolBar *toolbar;
 };

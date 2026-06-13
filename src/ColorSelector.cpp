@@ -24,3 +24,10 @@ ColorSelector::ColorSelector(QWidget *parent)
 
     connect(cw, &ColorWheel::ColorSelected, cb, &ColorButtons::setColor);
 }
+
+void ColorSelector::closeEvent(QCloseEvent *event)
+{
+    event->ignore();
+    hide();
+    emit closed();
+}
